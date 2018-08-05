@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FrontpageService } from '../frontpage/frontpage.service';
 
 @Component({
   selector: 'app-frontpage',

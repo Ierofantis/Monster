@@ -7,6 +7,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
+import { FrontpageService } from './frontpage/frontpage.service';
 
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
@@ -30,7 +31,7 @@ const routes: Routes = [
     AppRoutingModule,
     [ RouterModule.forRoot(routes) ]
   ],
-  providers: [],
+  providers: [FrontpageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
