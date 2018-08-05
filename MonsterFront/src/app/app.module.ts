@@ -10,9 +10,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
+  { path: '', component: FrontpageComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'registration', component: RegisterComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: '**', component: FrontpageComponent }
 ];
 @NgModule({
   declarations: [
