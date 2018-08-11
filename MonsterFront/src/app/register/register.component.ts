@@ -11,10 +11,10 @@ import { of } from 'rxjs/observable/of';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  constructor(private http: HttpClient, private router: Router) { }
   signupData = { username:'', password:'' };
   message = '';
+  constructor(private http: HttpClient, private router: Router) { }
+  
   ngOnInit() {
   }
   signup() {
@@ -24,5 +24,12 @@ export class RegisterComponent implements OnInit {
     }, err => {
       this.message = err.error.msg;
     });
+  }
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error); // log to console instead
+      console.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 }

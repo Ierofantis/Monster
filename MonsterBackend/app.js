@@ -3,7 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var morgan = require('morgan');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./config/database');
@@ -15,20 +14,20 @@ mongoose.connect(config.database, { promiseLibrary: require('bluebird') })
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var api = require('./routes/api');
 
 var app = express();
 var cors = require('cors');
 
 var app = express();
 app.use(cors());
-app.use('/api', usersRouter);
 var bodyParser = require('body-parser');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
 // mongoose.connect("mongodb://localhost/Monster", function (error){
    
@@ -48,7 +47,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

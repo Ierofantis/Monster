@@ -37,7 +37,8 @@ const routes: Routes = [
     FormsModule,  
     HttpClientModule,
     AppRoutingModule,
-    [ RouterModule.forRoot(routes) ]
+    [ RouterModule.forRoot(routes, { enableTracing: true })
+       ]
   ],
   providers: [FrontpageService],
   bootstrap: [AppComponent]
