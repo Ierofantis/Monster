@@ -1,3 +1,78 @@
-<p>
-  register works!
-</p>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">Clarence Taylor</span>
+        <span class="d-none d-lg-block">
+          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/images/cruiter.png" alt="">
+        </span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="#Why">Why Monster</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/registration">Registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/login">login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="/admin">admin</a>
+          </li>         
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-0">    
+
+      <hr class="m-0">
+
+      <section class="resume-section p-3 p-lg-5 d-flex flex-column" id="Why">
+        <div class="my-auto">
+          <div class="resume-item d-flex flex-column flex-md-row mb-5">
+            <div class="resume-content mr-auto">
+              <div class="card bg-light">
+                <article class="card-body mx-auto" style="max-width: 400px;">
+                  <h4 class="card-title mt-3 text-center">Create Account</h4>
+                  <p class="text-center">Get started with your free account</p>               
+                 
+                  <form class="form-signin" (ngSubmit)="signup()" #signupForm="ngForm">             
+                    <h2 class="form-signin-heading">Sign Up Now</h2>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" class="form-control" placeholder="Email address" [(ngModel)]="signupData.username" name="username" required/>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="signupData.password" name="password" required/>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!signupForm.form.valid">Sign Up</button>
+                </form>
+                </article>
+                </div> <!-- card.// -->
+                
+            </div>         
+          </div>
+
+        </div>
+
+      </section>
+
+      <hr class="m-0">
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+   
+
+
+
+<!-- <div class="card card-block"
+     *ngFor="let datas of data">
+  <h4 class="card-title">{{datas.testHeader}}</h4>
+  <p class="card-text">{{datas.test}}</p>
+</div> -->

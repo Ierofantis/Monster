@@ -8,13 +8,19 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontpageService } from './frontpage/frontpage.service';
-
+import { HttpClientModule } from '@angular/common/http'; 
+import { FormsModule }   from '@angular/forms';
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
   { path: '', component: FrontpageComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'registration', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'registration', component: RegisterComponent, data: { title: 'Sign Up' }
+  },
+{ path: '',
+  redirectTo: '/profile',
+  pathMatch: 'full'
+ },
+  { path: 'login', component: LoginComponent,data:{title:'Login'} },
   { path: '**', component: FrontpageComponent }
 ];
 @NgModule({
@@ -28,6 +34,8 @@ const routes: Routes = [
   exports: [ RouterModule ],
   imports: [
     BrowserModule,
+    FormsModule,  
+    HttpClientModule,
     AppRoutingModule,
     [ RouterModule.forRoot(routes) ]
   ],

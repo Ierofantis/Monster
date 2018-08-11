@@ -7,26 +7,14 @@ import { FrontpageService } from '../frontpage/frontpage.service';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
-  data: Object[];
+  public data;
 
-  constructor() { }
+  constructor(public frontpageService: FrontpageService) { }
 
   ngOnInit() {
-    this.data = [
-      {
-        testHeader:"Test One",
-        test:"one"
-      },
-      {
-        testHeader:"Test Two",
-        test:"two"
-      },
-      {
-        testHeader:"Test Three",
-        test:"three"
-      },
-    ];
+    this.data = this.frontpageService.getAllObj().subscribe(posts => this.data = posts);
+    this.data = Array.of(this.data);
+    // this.data = accdetailservice;
   }
-  
 
 }

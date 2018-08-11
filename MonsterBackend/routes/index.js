@@ -4,7 +4,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
- res.json([{ Test:"Ones" },{Test:"Two" }])
+ res.json([{testHeader:"Test One", test:"one"}])
 });
 
 module.exports = router;

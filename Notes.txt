@@ -1,0 +1,17 @@
+Development Notes
+
+1)Frontend Page
+
+a)Login Page
+
+b)Initial Page( Edit Button->goes to an admin page->
+ you can add-delete content according to your role, change roles to users(Admin-Editor-Simple User)
+ 
+ Roles
+
+ Admin Can Delete Users and Editors and create or delete Content)
+ Editors Can Create or Delete THEIR content
+ Simple Users can only read Content 
+ 
+2)Backend Pages
+Microservices performing REST calls and communicate with MongoDB 
