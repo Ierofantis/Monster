@@ -1,4 +1,4 @@
 # Monster CMS
 # In Progress
 
-![alt tag](https://i.imgur.com/i43sMLd.png)
+![alt tag](https://i.imgur.com/Cf3wCr6.png)
