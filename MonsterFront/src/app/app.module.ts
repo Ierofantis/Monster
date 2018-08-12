@@ -11,6 +11,7 @@ import { FrontpageService } from './frontpage/frontpage.service';
 import { HttpClientModule } from '@angular/common/http'; 
 import { FormsModule }   from '@angular/forms';
 import { AuthGuardComponent } from './auth-guard/auth-guard.component';
+import { MyPageComponent } from './my-page/my-page.component';
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
   { path: '', component: FrontpageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   pathMatch: 'full'
  },
   { path: 'login', component: LoginComponent,data:{title:'Login'} },
+  { path: 'my-page', component: MyPageComponent },
   { path: '**', component: FrontpageComponent }
 ];
 @NgModule({
@@ -31,7 +33,8 @@ const routes: Routes = [
     FrontpageComponent,
     LoginComponent,
     RegisterComponent,
-    AuthGuardComponent
+    AuthGuardComponent,
+    MyPageComponent
   ],
   exports: [ RouterModule ],
   imports: [
