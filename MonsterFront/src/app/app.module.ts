@@ -10,10 +10,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { FrontpageService } from './frontpage/frontpage.service';
 import { HttpClientModule } from '@angular/common/http'; 
 import { FormsModule }   from '@angular/forms';
+import { AuthGuardComponent } from './auth-guard/auth-guard.component';
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
   { path: '', component: FrontpageComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [ AuthGuardComponent ] },
   { path: 'registration', component: RegisterComponent, data: { title: 'Sign Up' }
   },
 { path: '',
@@ -29,7 +30,8 @@ const routes: Routes = [
     AdminComponent,
     FrontpageComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AuthGuardComponent
   ],
   exports: [ RouterModule ],
   imports: [
@@ -37,10 +39,10 @@ const routes: Routes = [
     FormsModule,  
     HttpClientModule,
     AppRoutingModule,
-    [ RouterModule.forRoot(routes, { enableTracing: true })
+    [ RouterModule.forRoot(routes)
        ]
   ],
-  providers: [FrontpageService],
+  providers: [FrontpageService,AuthGuardComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

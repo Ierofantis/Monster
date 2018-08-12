@@ -6,6 +6,7 @@ import { FrontpageService } from '../frontpage/frontpage.service';
   templateUrl: './frontpage.component.html',
   styleUrls: ['./frontpage.component.css']
 })
+
 export class FrontpageComponent implements OnInit {
   public data;
 
