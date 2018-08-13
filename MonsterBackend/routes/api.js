@@ -6,6 +6,7 @@ var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
+var Article = require("../models/Articles");
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
@@ -39,6 +40,7 @@ router.post('/signin', function(req, res) {
         if (isMatch && !err) {
           // if user is found and password is right create a token
           var token = jwt.sign(user.toJSON(), config.secret);
+      
           // return the information including token as JSON
           res.json({success: true, token: 'JWT ' + token});
         } else {
@@ -46,6 +48,20 @@ router.post('/signin', function(req, res) {
         }
       });
     }
+  });
+});
+
+router.post('/article',function(req,res){
+  var newArticle = new Article({
+    loop:req.body.loop,
+    username:req.body.username
+  });
+  // save the article
+  newArticle.save(function(err) {
+    if (err) {
+      return res.json({success: false, msg: err});
+    }
+    res.json({success: true, msg: 'Successful created new article'});
   });
 });
 

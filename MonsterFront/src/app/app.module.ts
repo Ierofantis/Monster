@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 import { AuthGuardComponent } from './auth-guard/auth-guard.component';
 import { MyPageComponent } from './my-page/my-page.component';
+
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
   { path: '', component: FrontpageComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'my-page', component: MyPageComponent },
   { path: '**', component: FrontpageComponent }
 ];
+
 @NgModule({
   declarations: [
     AppComponent,
