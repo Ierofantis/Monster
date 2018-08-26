@@ -15,21 +15,14 @@ export class LoginComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   loginData = { username:'', password:'' };
-  decoded = jwt_decode(localStorage.getItem('jwtToken'));
-  articleData = { loop:'test', username:this.decoded.username };
+  decoded = jwt_decode(localStorage.getItem('jwtToken')); 
   message = '';
   data: any;
+
   ngOnInit() {
     //localStorage.getItem('jwtToken');
-      this.http.post('http://localhost:3000/api/article',this.articleData).subscribe(resp => {
-        this.data = resp;
-        console.log(this.data)
-      }, err => {
-        this.message = err.error.msg;
-      });
-    
   }
-  
+    
   login() {
     this.http.post('http://localhost:3000/api/signin',this.loginData).subscribe(resp => {
       this.data = resp;

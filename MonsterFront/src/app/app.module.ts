@@ -9,10 +9,10 @@ import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontpageService } from './frontpage/frontpage.service';
 import { HttpClientModule } from '@angular/common/http'; 
-import { FormsModule }   from '@angular/forms';
 import { AuthGuardComponent } from './auth-guard/auth-guard.component';
 import { MyPageComponent } from './my-page/my-page.component';
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
   { path: '', component: FrontpageComponent },
@@ -38,10 +38,13 @@ const routes: Routes = [
     AuthGuardComponent,
     MyPageComponent
   ],
+  
   exports: [ RouterModule ],
   imports: [
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     BrowserModule,
     FormsModule,  
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     [ RouterModule.forRoot(routes)

@@ -44,8 +44,16 @@
           </h1>
           <div class="subheading mb-5">Under MIT license
             <a href="https://github.com/Ierofantis/">My Github</a>
-          </div>         
+          </div>      
+          <form class="form-signin" (ngSubmit)="articlePost()">   
+          <textarea  [froalaEditor] [(froalaModel)]="editorContent" name="editorContent"></textarea>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!editorContent">Post</button>
+          </form> 
+
+          <!-- <div [froalaEditor] [(froalaModel)]="twoWayContent"></div> -->
+
         </div>
+        
       </section>
 
       <hr class="m-0">
@@ -75,12 +83,8 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-   
-
-
-
-<!-- <div class="card card-block"
-     *ngFor="let datas of data">
-  <h4 class="card-title">{{datas.testHeader}}</h4>
-  <p class="card-text">{{datas.test}}</p>
-</div> -->
+    <!-- <div class="card card-block"
+        *ngFor="let datas of data">
+      <h4 class="card-title">{{datas.testHeader}}</h4>
+      <p class="card-text">{{datas.test}}</p>
+    </div> -->
