@@ -45,13 +45,16 @@
           <div class="subheading mb-5">Under MIT license
             <a href="https://github.com/Ierofantis/">My Github</a>
           </div>      
-          <form class="form-signin" (ngSubmit)="articlePost()">   
-          <textarea  [froalaEditor] [(froalaModel)]="editorContent" name="editorContent"></textarea>
-          <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!editorContent">Post</button>
-          </form> 
-
+          <!-- <form class="form-signin" (ngSubmit)="articlePost()">  
+          <textarea [froalaEditor] [(froalaModel)]="editorContent" name="editorContent"></textarea>
+          
+          </form>  -->
+          <app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="loop"></app-ngx-editor>
+          <!-- <textarea [froalaEditor] [(froalaModel)]="editorContent" [ngModel]="editorContent" name="editorContent"></textarea> -->
+          <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!loop" (click)="articlePost()">Post</button>
+          <!-- <div [froalaView]="editorContent"></div> -->
           <!-- <div [froalaEditor] [(froalaModel)]="twoWayContent"></div> -->
-
+          <!-- <input [ngModel]="editorContent"/> -->         
         </div>
         
       </section>

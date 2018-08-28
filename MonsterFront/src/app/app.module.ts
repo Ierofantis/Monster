@@ -13,6 +13,7 @@ import { AuthGuardComponent } from './auth-guard/auth-guard.component';
 import { MyPageComponent } from './my-page/my-page.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxEditorModule } from 'ngx-editor';
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
   { path: '', component: FrontpageComponent },
@@ -44,6 +45,7 @@ const routes: Routes = [
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     BrowserModule,
     FormsModule,  
+    NgxEditorModule ,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
