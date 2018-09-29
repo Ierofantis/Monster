@@ -8,35 +8,35 @@ import * as jwt_decode from 'jwt-decode';
   styleUrls: ['./my-page.component.css']
 })
 export class MyPageComponent implements OnInit {
-  user_list;
-  article_list;
-  decodeUsername;
-  
+  user_list:any;
+  article_list: any[] = [];
+  decodeUsername:any;
+  values : any[] = [];
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    //  this.http
-    // .get('http://localhost:3000/api/mainLoop')
-    // .subscribe(resp => {
-    // this.data = resp;
-     this.getUsers();
-  
+     this.getUsers();  
 }
 
 getUsers(){
   this.http.get('http://localhost:3000/api/mainLoop').subscribe(resp => {    
+
     this.user_list = resp;
-    for(var i=0; i<this.user_list.length; i++){
-      if(localStorage.getItem('jwtToken') != undefined){
-      this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;
+
+    if(localStorage.getItem('jwtToken') != undefined){
+
+    for(var i=0; i<this.user_list.length; i++){     
+      this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;      
+
       if(this.user_list[i].username === this.decodeUsername){
-        this.article_list = this.user_list;
+        for (var key in this.user_list) {
+          this.values.push(this.user_list[key])
+      }
+
+      this.article_list.push(this.values[i].loop);    
       }
     }
-   }
-    //if(this.user_list.username == this.decodeUsername ){
-   // console.log(this.user_list.length)
-   // }
+   } 
   }, err => {
    console.log(err)
   });
