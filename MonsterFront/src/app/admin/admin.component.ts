@@ -23,7 +23,11 @@ export class AdminComponent implements OnInit {
   
   message = '';
 
-  constructor(private http: HttpClient, private router: Router) {this.articleData = {loop:this.loop, username:this.decoded.username }; }
+  constructor(private http: HttpClient, private router: Router) {
+    //if(localStorage.getItem('jwtToken') != undefined){
+    this.articleData = {loop:this.loop, username:this.decoded.username }; 
+   // }
+  }
 
   ngOnInit() {}
 

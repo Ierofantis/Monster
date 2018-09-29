@@ -60,30 +60,23 @@ router.post('/article',function(req,res){
   newArticle.save(function(err) {
     if (err) {
       return res.json({success: false, msg: err});
-    }
-    console.log(newArticle);   
+    }      
     res.json({success: true, msg: 'Successful created new article'});
   });
 });
 
 router.get('/mainLoop', function(req, res) {
-  Article.find({'username': req.user._id}, (err, posts) => {
+  console.log(req);
+  Article.find({}, (err, posts) => {
      if(err) {
-       console.log(err);
+      // console.log(err);
      } else {
-       console.log({currentUser: req.user, posts: posts});
+       res.json(posts);
+       console.log(posts);       
      }
   });
-
-  // save the article
-  newArticle.save(function(err) {
-    if (err) {
-      return res.json({success: false, msg: err});
-    }
-    //console.log(newArticle);   
-    res.json({success: true, msg: 'Successful created new article'});
-  });
 });
+
 getToken = function (headers) {
   if (headers && headers.authorization) {
     var parted = headers.authorization.split(' ');
