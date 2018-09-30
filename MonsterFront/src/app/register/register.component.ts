@@ -11,21 +11,21 @@ import { of } from 'rxjs/observable/of';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  signupData = { username:'', password:'' };
+  signupData = { username: '', password: '' };
   message = '';
   constructor(private http: HttpClient, private router: Router) { }
-  
+
   ngOnInit() {
   }
   signup() {
-    this.http.post('http://localhost:3000/api/signup',this.signupData).subscribe(resp => {
+    this.http.post('http://localhost:3000/api/signup', this.signupData).subscribe(resp => {
       console.log(resp);
       this.router.navigate(['login']);
     }, err => {
       this.message = err.error.msg;
     });
   }
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); // log to console instead
       console.log(`${operation} failed: ${error.message}`);

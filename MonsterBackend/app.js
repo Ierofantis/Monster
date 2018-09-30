@@ -29,12 +29,6 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(passport.initialize());
-// mongoose.connect("mongodb://localhost/Monster", function (error){
-   
-//    if (error) console.error(error);
-//    else console.log("mongo connected")
-
-// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

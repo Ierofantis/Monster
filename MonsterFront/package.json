@@ -24,6 +24,7 @@
     "angular-froala-wysiwyg": "^2.8.4-1",
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.4.1",
+    "decode-html-entities": "^1.1.10",
     "jwt-decode": "^2.2.0",
     "ngx-bootstrap": "^3.0.1",
     "ngx-editor": "^3.3.0",

@@ -14,6 +14,7 @@ import { MyPageComponent } from './my-page/my-page.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
+
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
   { path: '', component: FrontpageComponent },
@@ -28,13 +29,13 @@ const routes: Routes = [
   { path: 'my-page', component: MyPageComponent },
   { path: '**', component: FrontpageComponent }
 ];
-
+   
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
     FrontpageComponent,
-    LoginComponent,
+    LoginComponent, 
     RegisterComponent,
     AuthGuardComponent,
     MyPageComponent
@@ -45,7 +46,7 @@ const routes: Routes = [
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     BrowserModule,
     FormsModule,  
-    NgxEditorModule ,
+    NgxEditorModule ,    
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
