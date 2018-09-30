@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
@@ -13,8 +13,6 @@ export class MyPageComponent implements OnInit {
   article_list: any[] = [];
   decodeUsername: any;
   values: any[] = [];
-  parser = new DOMParser();
-  @ViewChild('dataContainer') dataContainer: ElementRef;
 
   constructor(private http: HttpClient) { }
 
@@ -38,8 +36,7 @@ export class MyPageComponent implements OnInit {
             }       
             this.article_list.push(this.values[i].loop);            
           }
-        }
-        
+        }        
         for (var i = 0; i < this.article_list.length; i++) {         
           $('<div class="results" />').html(this.article_list[i]).appendTo('#demo');        
         }
