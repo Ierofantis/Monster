@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
-
+import * as $ from 'jquery';
 @Component({
   selector: 'app-my-page',
   templateUrl: './my-page.component.html',
@@ -13,6 +13,7 @@ export class MyPageComponent implements OnInit {
   article_list: any[] = [];
   decodeUsername: any;
   values: any[] = [];
+   $: any;
 
   constructor(private http: HttpClient) { }
 
@@ -38,7 +39,7 @@ export class MyPageComponent implements OnInit {
           }
         }        
         for (var i = 0; i < this.article_list.length; i++) {         
-          $('<div class="results" />').html(this.article_list[i]).appendTo('#demo');        
+          $('<div class="grid-item"/>').html(this.article_list[i]+ "<h4>delete/edit</h4>").appendTo('.grid-container');        
         }
       }
     }, err => {
