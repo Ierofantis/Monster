@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
 import * as $ from 'jquery';
+
 @Component({
   selector: 'app-my-page',
   templateUrl: './my-page.component.html',
