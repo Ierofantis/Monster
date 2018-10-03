@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as jwt_decode from 'jwt-decode';
@@ -10,11 +10,13 @@ import * as $ from 'jquery';
   styleUrls: ['./my-page.component.css']
 })
 export class MyPageComponent implements OnInit {
+
   user_list: any;
   article_list: any[] = [];
   decodeUsername: any;
   values: any[] = [];
-   $: any;
+  $: any;
+  htmlVariable: string;
 
   constructor(private http: HttpClient) { }
 
@@ -35,13 +37,15 @@ export class MyPageComponent implements OnInit {
           if (this.user_list[i].username === this.decodeUsername) {
             for (var key in this.user_list) {
               this.values.push(this.user_list[key])
-            }       
+            }
             this.article_list.push(this.values[i].loop);            
           }
-        }        
-        for (var i = 0; i < this.article_list.length; i++) {         
-          $('<div class="grid-item"/>').html(this.article_list[i]+ "<h4>delete/edit</h4>").appendTo('.grid-container');        
         }
+         for (var i = 0; i < this.article_list.length; i++) {
+        //  $('<div class="grid-item"/>').html(this.article_list[i]).appendTo('.grid-container');
+         // this.htmlVariable = this.article_list[i];
+        
+         }
       }
     }, err => {
       console.log(err)

@@ -7,6 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  
   public tokenNotExpired = tokenNotExpired('jwtToken');
 
   constructor() { }
