@@ -25,8 +25,8 @@ export class MyPageComponent implements OnInit {
   }
 
   getUsers() {
-    this.http.get('http://localhost:3000/api/mainLoop').subscribe(resp => {
 
+    this.http.get('http://localhost:3000/api/mainLoop').subscribe(resp => {
       this.user_list = resp;
 
       if (localStorage.getItem('jwtToken') != undefined) {
@@ -38,12 +38,13 @@ export class MyPageComponent implements OnInit {
             for (var key in this.user_list) {
               this.values.push(this.user_list[key])
             }
-            this.article_list.push(this.values[i].loop);            
+            this.article_list.push(this.values[i].loop);
           }
         }
+
         // for (var i = 0; i < this.article_list.length; i++) {
         //  $('<div class="grid-item"/>').html(this.article_list[i]).appendTo('.grid-container');
-         // this.htmlVariable = this.article_list[i];        
+        // this.htmlVariable = this.article_list[i];        
         // }
       }
     }, err => {

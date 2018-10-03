@@ -62,7 +62,7 @@ router.post('/article', function (req, res) {
       return res.json({ success: false, msg: err });
     }
     res.json({ success: true, msg: 'Successful created new article' });
-  });
+    });
 });
 
 router.get('/mainLoop', function (req, res) {

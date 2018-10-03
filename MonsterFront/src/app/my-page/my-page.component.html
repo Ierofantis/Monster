@@ -12,7 +12,7 @@
     <button> DELETE</button>
   </li>
 </ul> -->
-
+<app-navbar></app-navbar>
 <div class="container" *ngFor="let item of article_list; let i = index">
   <div class="row">
     <div class="span12">
@@ -31,12 +31,12 @@
             <img src="http://placehold.it/260x180" alt="">
           </a>
         </div>
-        <div class="span10">
-          <p>
-              <span [innerHtml]= 'article_list[i]' >  </span>
+        <div class="span10 complete item">
+          <p [innerHtml]='article_list[i]'>
           </p>
           <p>
-            <a class="btn" href="#">Read more</a>
+
+            <a class="btn readMore">Read more</a>
           </p>
         </div>
       </div>
