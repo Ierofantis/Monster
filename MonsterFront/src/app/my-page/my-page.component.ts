@@ -41,11 +41,10 @@ export class MyPageComponent implements OnInit {
             this.article_list.push(this.values[i].loop);            
           }
         }
-         for (var i = 0; i < this.article_list.length; i++) {
+        // for (var i = 0; i < this.article_list.length; i++) {
         //  $('<div class="grid-item"/>').html(this.article_list[i]).appendTo('.grid-container');
-         // this.htmlVariable = this.article_list[i];
-        
-         }
+         // this.htmlVariable = this.article_list[i];        
+        // }
       }
     }, err => {
       console.log(err)
