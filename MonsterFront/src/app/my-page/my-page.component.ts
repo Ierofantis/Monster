@@ -17,11 +17,28 @@ export class MyPageComponent implements OnInit {
   values: any[] = [];
   $: any;
   htmlVariable: string;
+  
+  loop: any ="";
+   title:any="";
+  
+  decoded = jwt_decode(localStorage.getItem('jwtToken'));
+  articleComment : any ="";
+  data: any;  
+  message = '';
+  comment: any ="";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {this.articleComment = {comment:this.comment} }
 
   ngOnInit() {
     this.getUsers();
+  }
+  addComment(){
+    this.http.post('http://localhost:3000/api/comment', this.articleComment).subscribe(resp => {
+      this.data = resp;
+      console.log(this.data)
+    }, err => {
+      this.message = err.error.msg;
+    });  
   }
 
   getUsers() {
@@ -35,13 +52,15 @@ export class MyPageComponent implements OnInit {
           this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;
 
           if (this.user_list[i].username === this.decodeUsername) {
-            for (var key in this.user_list) {
-              this.values.push(this.user_list[key])
-            }
-            this.article_list.push(this.values[i].loop);
+            // for (var key in this.user_list) {
+               this.values.push(this.user_list[i]);               
+           // }    
+           // this.article_list = this.user_list;   
           }
         }
-
+        // for (var i = 0; i < this.values.length; i++) {
+        // this.article_list.push(this.values[i].loop,this.values[i].title);
+        // }
         // for (var i = 0; i < this.article_list.length; i++) {
         //  $('<div class="grid-item"/>').html(this.article_list[i]).appendTo('.grid-container');
         // this.htmlVariable = this.article_list[i];        

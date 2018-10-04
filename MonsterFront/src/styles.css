@@ -1,20 +1,2 @@
 /* You can add global styles to this file, and also import other style files */
-
-.button {
-  background: green;
-  border-radius: 5px;
-  padding: 5px;
-  color: white;
-  text-align: center;
-}
-
-.view {
-  max-width: 220px;
-  margin: auto;
-  height: 390px;
-  border: 10px solid black;
-  border-top: 30px solid black;
-  border-bottom: 30px solid black;
-  border-radius: 15px; padding: 10px;
-  position: relative;
-}
+.span10{margin-top: 40px;}

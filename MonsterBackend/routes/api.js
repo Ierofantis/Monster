@@ -54,7 +54,8 @@ router.post('/signin', function (req, res) {
 router.post('/article', function (req, res) {
   var newArticle = new Article({
     loop: req.body.loop,
-    username: req.body.username
+    username: req.body.username,
+    title:req.body.title   
   });
   // save the article
   newArticle.save(function (err) {
@@ -62,6 +63,21 @@ router.post('/article', function (req, res) {
       return res.json({ success: false, msg: err });
     }
     res.json({ success: true, msg: 'Successful created new article' });
+    });
+});
+
+router.post('/comment', function (req, res) {
+  console.log(req.body.comment)
+  var comment = new Article({
+    comment:req.body.comment   
+  });
+  // save the article
+  comment.save(function (err) {
+    if (err) {
+      return res.json({ success: false, msg: err });
+    }
+    res.json({ success: true, msg: 'Successful created a comment' });
+  
     });
 });
 

@@ -12,7 +12,8 @@ import { FroalaEditorDirective } from 'angular-froala-wysiwyg';
 export class AdminComponent implements OnInit {
  // @Input() editorContent;
    loop: any ="";
-
+   title:any="";
+  
   oParser = new DOMParser();
   oDOM = this.oParser.parseFromString(this.loop, "text/html");
   text = this.oDOM.body.innerText;
@@ -25,7 +26,7 @@ export class AdminComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {
     //if(localStorage.getItem('jwtToken') != undefined){
-    this.articleData = {loop:this.loop, username:this.decoded.username }; 
+    this.articleData = {title:this.title,loop:this.loop, username:this.decoded.username }; 
    // }
   }
 
@@ -35,7 +36,7 @@ export class AdminComponent implements OnInit {
     //debugger;
     //localStorage.getItem('jwtToken');
    
-    this.articleData = {loop:this.loop, username:this.decoded.username}
+    this.articleData = {title:this.title,loop:this.loop, username:this.decoded.username}
     console.log(this.articleData)   
     this.http.post('http://localhost:3000/api/article', this.articleData).subscribe(resp => {
       this.data = resp;
