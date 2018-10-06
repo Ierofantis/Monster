@@ -10,37 +10,30 @@ import { FroalaEditorDirective } from 'angular-froala-wysiwyg';
 })
 
 export class AdminComponent implements OnInit {
- // @Input() editorContent;
-   loop: any ="";
-   title:any="";
-  
+  // @Input() editorContent;
+  loop: any = "";
+  title: any = "";
+  id:any="";
   oParser = new DOMParser();
   oDOM = this.oParser.parseFromString(this.loop, "text/html");
   text = this.oDOM.body.innerText;
-
   decoded = jwt_decode(localStorage.getItem('jwtToken'));
-  articleData : any ="";
+  articleData: any = "";
   data: any;
-  
   message = '';
 
   constructor(private http: HttpClient, private router: Router) {
     //if(localStorage.getItem('jwtToken') != undefined){
-    this.articleData = {title:this.title,loop:this.loop, username:this.decoded.username }; 
-   // }
+    this.articleData = { title: this.title, loop: this.loop, username: this.decoded.username };
+    // }
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  articlePost(){
-    //debugger;
-    //localStorage.getItem('jwtToken');
-   
-    this.articleData = {title:this.title,loop:this.loop, username:this.decoded.username}
-    console.log(this.articleData)   
+  articlePost(id) {
+    this.articleData = {title: this.title, loop: this.loop, username: this.decoded.username };   
     this.http.post('http://localhost:3000/api/article', this.articleData).subscribe(resp => {
       this.data = resp;
-      console.log(this.data)
     }, err => {
       this.message = err.error.msg;
     });

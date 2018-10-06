@@ -17,29 +17,44 @@ export class MyPageComponent implements OnInit {
   values: any[] = [];
   $: any;
   htmlVariable: string;
-  
-  loop: any ="";
-   title:any="";
-  
+  loop: any = "";
+  title: any = "";
   decoded = jwt_decode(localStorage.getItem('jwtToken'));
-  articleComment : any ="";
-  data: any;  
+  articleComment: any = "";
+  data: any;
   message = '';
-  comment: any ="";
-
-  constructor(private http: HttpClient) {this.articleComment = {comment:this.comment} }
+  comment: any;
+  getComment: any;
+  ArticleId: any;
+  commentValues: any[] = [];
+  
+  constructor(private http: HttpClient) { this.articleComment = { comment: this.comment } }
 
   ngOnInit() {
     this.getUsers();
+    this.getComments();
   }
-  addComment(){
+
+  addComment(ArticleId) {
+
+    this.articleComment = { ArticleId: ArticleId, comment: this.comment };
     this.http.post('http://localhost:3000/api/comment', this.articleComment).subscribe(resp => {
-      this.data = resp;
-      console.log(this.data)
+      this.comment = resp;
     }, err => {
       this.message = err.error.msg;
-    });  
+    });
   }
+
+  getComments() {
+
+    this.http.get('http://localhost:3000/api/getComments').subscribe(resp => {
+      this.getComment = resp; 
+      for (var i = 0; i < this.getComment.length; i++) {        
+        this.commentValues.push(this.getComment[i]);
+       
+      }
+    });
+  };
 
   getUsers() {
 
@@ -50,21 +65,12 @@ export class MyPageComponent implements OnInit {
 
         for (var i = 0; i < this.user_list.length; i++) {
           this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;
-
           if (this.user_list[i].username === this.decodeUsername) {
-            // for (var key in this.user_list) {
-               this.values.push(this.user_list[i]);               
-           // }    
-           // this.article_list = this.user_list;   
+  
+            this.values.push(this.user_list[i]);            
           }
-        }
-        // for (var i = 0; i < this.values.length; i++) {
-        // this.article_list.push(this.values[i].loop,this.values[i].title);
-        // }
-        // for (var i = 0; i < this.article_list.length; i++) {
-        //  $('<div class="grid-item"/>').html(this.article_list[i]).appendTo('.grid-container');
-        // this.htmlVariable = this.article_list[i];        
-        // }
+        }       
+      
       }
     }, err => {
       console.log(err)

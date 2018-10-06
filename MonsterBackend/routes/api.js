@@ -7,6 +7,7 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
 var Article = require("../models/Articles");
+var Comment = require("../models/Comments");
 
 router.post('/signup', function (req, res) {
   if (!req.body.username || !req.body.password) {
@@ -52,38 +53,43 @@ router.post('/signin', function (req, res) {
 });
 
 router.post('/article', function (req, res) {
+
   var newArticle = new Article({
     loop: req.body.loop,
     username: req.body.username,
-    title:req.body.title   
+    title: req.body.title
   });
+  newArticle['id'] = newArticle._id;
+
   // save the article
   newArticle.save(function (err) {
     if (err) {
       return res.json({ success: false, msg: err });
     }
     res.json({ success: true, msg: 'Successful created new article' });
-    });
+  });
 });
 
 router.post('/comment', function (req, res) {
-  console.log(req.body.comment)
-  var comment = new Article({
-    comment:req.body.comment   
+
+  var comment = new Comment({
+    ArticleId: req.body.ArticleId,
+    comment: req.body.comment
   });
-  // save the article
+  //console.log(comment.ArticleId)
+  // save the comment
   comment.save(function (err) {
     if (err) {
       return res.json({ success: false, msg: err });
     }
     res.json({ success: true, msg: 'Successful created a comment' });
-  
-    });
+
+  });
 });
 
-router.get('/mainLoop', function (req, res) {
-  console.log(req);
-  Article.find({}, (err, posts) => {
+router.get('/getComments', function (req, res) {
+  //console.log(req);
+  Comment.find({}, (err, posts) => {
     if (err) {
       res.json(err);
       console.log(err);
@@ -91,6 +97,18 @@ router.get('/mainLoop', function (req, res) {
       res.json(posts);
     }
   });
+});
+
+router.get('/mainLoop', function (req, res) {
+  //console.log(req);
+  Article.find({}, (err, posts) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(posts);
+    }
+  }).sort({ '_id': -1 });
 });
 
 getToken = function (headers) {
