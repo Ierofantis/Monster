@@ -27,7 +27,7 @@ const routes: Routes = [
   pathMatch: 'full'
  },
   { path: 'login', component: LoginComponent,data:{title:'Login'} },
-  { path: 'my-page', component: MyPageComponent, canActivate: [ AuthGuardComponent ] },
+  { path: 'my-page', component: MyPageComponent },
   { path: '**', component: FrontpageComponent }
 ];
    

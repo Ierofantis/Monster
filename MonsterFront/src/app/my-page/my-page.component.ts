@@ -19,15 +19,16 @@ export class MyPageComponent implements OnInit {
   htmlVariable: string;
   loop: any = "";
   title: any = "";
-  decoded = jwt_decode(localStorage.getItem('jwtToken'));
+  //decoded = jwt_decode(localStorage.getItem('jwtToken'));
   articleComment: any = "";
+  articleData: any = "";
   data: any;
   message = '';
   comment: any;
   getComment: any;
   ArticleId: any;
   commentValues: any[] = [];
-  
+  deleteArticles: any;
   constructor(private http: HttpClient) { this.articleComment = { comment: this.comment } }
 
   ngOnInit() {
@@ -45,13 +46,22 @@ export class MyPageComponent implements OnInit {
     });
   }
 
+  deleteArticle(id) {
+
+    this.articleData = { id: id };
+    this.http.post('http://localhost:3000/api/destroy', this.articleData).subscribe(resp => {
+      this.deleteArticles = resp;
+    }, err => {
+      this.message = err.error.msg;
+    });
+  }
+
   getComments() {
 
     this.http.get('http://localhost:3000/api/getComments').subscribe(resp => {
-      this.getComment = resp; 
-      for (var i = 0; i < this.getComment.length; i++) {        
+      this.getComment = resp;
+      for (var i = 0; i < this.getComment.length; i++) {
         this.commentValues.push(this.getComment[i]);
-       
       }
     });
   };
@@ -61,17 +71,16 @@ export class MyPageComponent implements OnInit {
     this.http.get('http://localhost:3000/api/mainLoop').subscribe(resp => {
       this.user_list = resp;
 
-      if (localStorage.getItem('jwtToken') != undefined) {
+     // if (localStorage.getItem('jwtToken') != undefined) {
 
         for (var i = 0; i < this.user_list.length; i++) {
-          this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;
-          if (this.user_list[i].username === this.decodeUsername) {
-  
-            this.values.push(this.user_list[i]);            
+         // this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;
+         // if (this.user_list[i].username === this.decodeUsername) {
+            this.values.push(this.user_list[i]);
           }
-        }       
-      
-      }
+      //  }
+
+      //}
     }, err => {
       console.log(err)
     });

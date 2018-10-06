@@ -76,8 +76,7 @@ router.post('/comment', function (req, res) {
     ArticleId: req.body.ArticleId,
     comment: req.body.comment
   });
-  //console.log(comment.ArticleId)
-  // save the comment
+
   comment.save(function (err) {
     if (err) {
       return res.json({ success: false, msg: err });
@@ -87,8 +86,17 @@ router.post('/comment', function (req, res) {
   });
 });
 
+router.post('/destroy', function (req, res) {
+  var id = req.body.id;
+  Article.findByIdAndRemove(id, req.body, function (err) {
+    if (err) {
+      return res.json({ success: false, msg: err });
+    }
+    res.json({ success: true, msg: 'Successful deleted Article' });
+  })
+})
+
 router.get('/getComments', function (req, res) {
-  //console.log(req);
   Comment.find({}, (err, posts) => {
     if (err) {
       res.json(err);
@@ -100,7 +108,6 @@ router.get('/getComments', function (req, res) {
 });
 
 router.get('/mainLoop', function (req, res) {
-  //console.log(req);
   Article.find({}, (err, posts) => {
     if (err) {
       res.json(err);
