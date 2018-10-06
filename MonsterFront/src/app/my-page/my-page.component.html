@@ -50,6 +50,7 @@
             <h1 class="mt-4" >{{item.title}}</h1>
             </div> -->
     <!-- Post Content Column -->
+    
     <div class="col-lg-8" *ngFor="let item of values; let i = index;">
 
       <!-- Title -->
@@ -89,54 +90,21 @@
             <!-- <textarea class="form-control" rows="3" [(ngModel)]="comment"></textarea> -->
           </div>
           <button type="submit" class="btn btn-primary" (click)="addComment(item.id)">Submit</button>
-
         </div>
       </div>
 
-      <!-- Single Comment -->
-      <!-- <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                {{item._id}}
-              </div>
-            </div> -->
-      <div class="media mb-4" *ngFor="let items of commentValues; let i = index;">
-        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-        <div class="media-body" *ngIf="items.ArticleId == item.id">
-          <h5 class="mt-0">Commenter Name</h5>
-          {{items.comment}}
+      <div *ngFor="let items of commentValues">
+        <div class="media mb-4" *ngIf="items.ArticleId == item.id">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">Commenter Name</h5>
+            {{items.comment}}
+          </div>
         </div>
       </div>
-      <!-- Comment with nested comments -->
-      <!-- <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-  
-                <div class="media mt-4">
-                  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                  <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                  </div>
-                </div>
-  
-                <div class="media mt-4">
-                  <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                  <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                  </div>
-                </div>
-  
-              </div>
-            </div> -->
 
     </div>
-
-    <!-- Sidebar Widgets Column -->
+<!-- Sidebar Widgets Column -->
     <div class="col-md-4">
 
       <!-- Search Widget -->
@@ -197,6 +165,7 @@
 
     </div>
 
+    
   </div>
   <!-- /.row -->
 
