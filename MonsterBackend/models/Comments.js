@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var CommentSchema = mongoose.Schema({
-  ArticleId:{type: String},
+  ArticleId: { type: String },
   comment: { type: String }
 });
 
