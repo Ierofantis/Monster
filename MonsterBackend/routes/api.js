@@ -107,6 +107,19 @@ router.get('/getComments', function (req, res) {
   });
 });
 
+router.get('/getUserProfile/:id', function (req, res) {
+  username=req.params.id;
+  Article.findOne({id: username}, (err, posts) => {
+    if (err) {
+      res.json(err);
+      console.log(err);
+    } else {
+      res.json(posts);
+      console.log(console.log(posts));
+    }
+  });
+});
+
 router.get('/mainLoop', function (req, res) {
   Article.find({}, (err, posts) => {
     if (err) {

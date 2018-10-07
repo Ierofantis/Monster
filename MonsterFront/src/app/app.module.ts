@@ -28,6 +28,7 @@ const routes: Routes = [
  },
   { path: 'login', component: LoginComponent,data:{title:'Login'} },
   { path: 'my-page', component: MyPageComponent },
+  { path: 'my-page/:id', component: MyPageComponent },
   { path: '**', component: FrontpageComponent }
 ];
    

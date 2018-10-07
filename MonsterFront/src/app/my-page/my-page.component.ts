@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {Router} from "@angular/router";
 import * as jwt_decode from 'jwt-decode';
 import * as $ from 'jquery';
 
@@ -29,7 +30,9 @@ export class MyPageComponent implements OnInit {
   ArticleId: any;
   commentValues: any[] = [];
   deleteArticles: any;
-  constructor(private http: HttpClient) { this.articleComment = { comment: this.comment } }
+  userProfiles: any;
+
+  constructor(private http: HttpClient, private router: Router) { this.articleComment = { comment: this.comment } }
 
   ngOnInit() {
     this.getUsers();
@@ -45,7 +48,14 @@ export class MyPageComponent implements OnInit {
       this.message = err.error.msg;
     });
   }
+  getUserProfile(id) {
 
+    this.http.get('http://localhost:3000/api/getUserProfile/'+id).subscribe(resp => {
+     this.userProfiles = resp;
+     this.router.navigate(['my-page/'+ this.userProfiles.id]);
+     console.log(resp);
+    });
+  };
   deleteArticle(id) {
 
     this.articleData = { id: id };
@@ -71,13 +81,13 @@ export class MyPageComponent implements OnInit {
     this.http.get('http://localhost:3000/api/mainLoop').subscribe(resp => {
       this.user_list = resp;
 
-     // if (localStorage.getItem('jwtToken') != undefined) {
+      // if (localStorage.getItem('jwtToken') != undefined) {
 
-        for (var i = 0; i < this.user_list.length; i++) {
-         // this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;
-         // if (this.user_list[i].username === this.decodeUsername) {
-            this.values.push(this.user_list[i]);
-          }
+      for (var i = 0; i < this.user_list.length; i++) {
+        // this.decodeUsername = jwt_decode(localStorage.getItem('jwtToken')).username;
+        // if (this.user_list[i].username === this.decodeUsername) {
+        this.values.push(this.user_list[i]);
+      }
       //  }
 
       //}
