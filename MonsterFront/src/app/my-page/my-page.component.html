@@ -75,7 +75,7 @@
         <!-- Author -->
         <p class="lead">
           by
-          <a href="#">{{item.username}}</a>
+          <a href="" (click)="$event.preventDefault(); getUserProfile(item.username)">{{item.username}}</a>
         </p>
 
         <hr>
@@ -96,7 +96,7 @@
 
         <hr>
         <button type="submit" class="btn btn-primary" (click)=" deleteArticle(item.id)">Delete</button>
-        <button type="submit" class="btn btn-primary" (click)=" getUserProfile(item.id)">getUserProfile</button>
+        <!-- <button type="submit" class="btn btn-primary" (click)=" getUserProfile(item.id)">getUserProfile</button> -->
         
         <!-- Comments Form -->
         <div class="card my-4">

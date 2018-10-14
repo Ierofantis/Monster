@@ -48,16 +48,12 @@ export class MyPageComponent implements OnInit {
       this.message = err.error.msg;
     });
   }
-  getUserProfile(id) {
 
-    this.http.get('http://localhost:3000/api/getUserProfile/'+id).subscribe(resp => {
-     this.userProfiles = resp;
-     this.router.navigate(['my-page/'+ this.userProfiles.id]);
-     console.log(resp);
-    });
+  getUserProfile(username) {  
+     this.router.navigate(['/my-page', username]);
   };
-  deleteArticle(id) {
 
+  deleteArticle(id) {    
     this.articleData = { id: id };
     this.http.post('http://localhost:3000/api/destroy', this.articleData).subscribe(resp => {
       this.deleteArticles = resp;
@@ -80,7 +76,6 @@ export class MyPageComponent implements OnInit {
 
     this.http.get('http://localhost:3000/api/mainLoop').subscribe(resp => {
       this.user_list = resp;
-
       // if (localStorage.getItem('jwtToken') != undefined) {
 
       for (var i = 0; i < this.user_list.length; i++) {
@@ -89,7 +84,6 @@ export class MyPageComponent implements OnInit {
         this.values.push(this.user_list[i]);
       }
       //  }
-
       //}
     }, err => {
       console.log(err)

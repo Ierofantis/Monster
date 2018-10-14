@@ -107,9 +107,9 @@ router.get('/getComments', function (req, res) {
   });
 });
 
-router.get('/getUserProfile/:id', function (req, res) {
-  username=req.params.id;
-  Article.findOne({id: username}, (err, posts) => {
+router.get('/getUserProfile/:username', function (req, res) {
+  username=req.params.username;
+  Article.find({username: username}, (err, posts) => {
     if (err) {
       res.json(err);
       console.log(err);

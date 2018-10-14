@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <!-- <div class="col-lg-8" *ngFor="let item of user_list; let i = index;">
+            <h1 class="mt-4" >{{item.title}}</h1>
+            </div> -->
+    <!-- Post Content Column -->
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-3">
+    </div>
+
+    <div class="col-lg-8">
+      <div  *ngFor="let item of userProfiles; let i = index;">
+        <!-- Title -->
+        <h1 class="mt-4">{{item.title}}</h1>        
+
+        <hr>
+        <hr>
+
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+
+        <hr>
+
+        <!-- Post Content -->
+
+        <p class="mb-0" [innerHtml]='item.loop'> </p>
+
+        <hr>
+        <!-- <button type="submit" class="btn btn-primary" (click)=" deleteArticle(item.id)">Delete</button> -->
+        <!-- <button type="submit" class="btn btn-primary" (click)=" getUserProfile(item.id)">getUserProfile</button> -->
+        
+
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Ierofantis 2018</p>
+  </div>
+  <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->

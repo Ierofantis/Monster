@@ -15,6 +15,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserProfilesComponent } from './user-profiles/user-profiles.component';
 
 const routes: Routes = [
   { path: 'profile', component: FrontpageComponent },
@@ -28,7 +29,7 @@ const routes: Routes = [
  },
   { path: 'login', component: LoginComponent,data:{title:'Login'} },
   { path: 'my-page', component: MyPageComponent },
-  { path: 'my-page/:id', component: MyPageComponent },
+  { path: 'my-page/:id', component: UserProfilesComponent },
   { path: '**', component: FrontpageComponent }
 ];
    
@@ -41,7 +42,8 @@ const routes: Routes = [
     RegisterComponent,
     AuthGuardComponent,
     MyPageComponent,
-    NavbarComponent
+    NavbarComponent,
+    UserProfilesComponent
   ],
   
   exports: [ RouterModule ],
